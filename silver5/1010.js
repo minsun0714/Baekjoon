@@ -9,11 +9,11 @@ for (let testCase of input) {
   solution([testCase[1], testCase[0], testCase[1] - testCase[0]]);
 }
 
-function solution([a, b, c]) {
-  a = factorial(BigInt(a));
-  b = factorial(BigInt(b));
-  c = factorial(BigInt(c));
-  console.log(Number(a / b / c));
+function solution([M, N, M_Minus_N]) {
+  M = factorial(BigInt(M));
+  N = factorial(BigInt(N));
+  M_Minus_N = factorial(BigInt(M_Minus_N));
+  console.log(Number(M / N / M_Minus_N));
 }
 
 function factorial(num) {
