@@ -1,5 +1,5 @@
 const input = require("fs")
-  .readFileSync("example.txt")
+  .readFileSync("/dev/stdin")
   .toString()
   .trim()
   .split("\n")
@@ -20,9 +20,4 @@ for (let i = 0; i < N; i++) {
   stackIndex.push(i);
 }
 
-let answer = "";
-for (let i = 0; i < N; i++) {
-  answer += result[i] + " ";
-}
-
-process.stdout.write(answer.trim());
+console.log(result.join(" "));
