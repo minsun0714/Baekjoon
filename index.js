@@ -5,4 +5,5 @@ const input = require("fs")
   .readFileSync(inputFileName)
   .toString()
   .trim()
-  .split("\n");
+  .split("\n")
+  .map((r) => r.split(" ").map(Number));
