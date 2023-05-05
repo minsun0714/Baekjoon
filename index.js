@@ -7,3 +7,4 @@ const input = require("fs")
   .trim()
   .split("\n")
   .map((r) => r.split(" ").map(Number));
+const [[N, K], ...items] = input;
