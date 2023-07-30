@@ -21,7 +21,7 @@ for i in range(3, n + 1):
     # 2가지 option이 있다.
     # # 이전 계단을 밟고 이번 계단을 밟는 것.
     # option1 = dp[i-3] + max(stairs[i-2], stairs[i-1]) + stairs[i]
-    # # 이전 계단을 포기하고 이번 계단을 밟는 것.
+    # # 이번 계단을 포기하고 다음 계단을 밟는 것.
     # option2 = dp[i-3] + stairs[i-2] + stairs[i - 1] + stairs[i + 1]
     # # 이전 계단을 포기하고 이번 계단을 밟는 것.
     # if (option1 > option2):
