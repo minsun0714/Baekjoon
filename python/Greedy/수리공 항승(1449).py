@@ -11,7 +11,7 @@ spots.sort()
 
 while spots:
     start = spots.pop()
-    while spots and start - spots[len(spots) - 1] < l:
+    while spots and start - spots[-1] < l:
         spots.pop()
     answer += 1
 
