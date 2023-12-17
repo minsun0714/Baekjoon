@@ -9,7 +9,7 @@ visited = [0] * (n + 1)
 
 def dfs(depth, visited, nums=[], start=1):
     if depth == m:
-        print(" ".join(map(str, nums)))
+        print(*nums)
         return
 
     for i in range(start, n + 1):
