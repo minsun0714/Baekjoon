@@ -11,7 +11,7 @@ end = 0
 ans = sys.maxsize
 partial_sum = nums[0]
 
-while start <= end and end < n:
+while start <= end:
     if partial_sum < s:
         if end < n - 1:
             end += 1
