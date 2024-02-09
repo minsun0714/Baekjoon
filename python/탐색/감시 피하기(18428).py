@@ -50,13 +50,10 @@ def dfs(o_list, depth, start_x, start_y):
 
     # 애초에 board에 'O'를 찍고 재귀 호출 아래에서 다시 'X'로 바꿔주는 방식으로 구현하면 board를 복사할 필요가 없고 더 간단해진다.
     for i in range(start_x, n):
-        k = start_y if i == start_x else 0  # 새 행에서는 start_y를 0부터 시작
-        for j in range(k, n):
-            # if not visited[i][j] and board[i][j] == 'X':
+        for j in range(start_y, n):
             if board[i][j] == 'X':
-                # visited[i][j] = 1
                 dfs(o_list + [(i, j)], depth + 1, i, j + 1)
-            # visited[i][j] = 0
+        start_y = 0
 
 
 dfs([], 0, 0, 0)
