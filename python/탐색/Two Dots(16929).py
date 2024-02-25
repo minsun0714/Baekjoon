@@ -7,7 +7,6 @@ board = [list(map(str, s.readline().strip())) for _ in range(n)]
 
 
 def dfs(x, y):
-    global count
     dx = [0, 0, -1, 1]
     dy = [-1, 1, 0, 0]
 
@@ -39,7 +38,6 @@ def dfs(x, y):
             visited[nx][ny] = True
 
             stack.append((nx, ny, x, y))
-            count += 1
 
     return
 
@@ -53,6 +51,5 @@ for i in range(n):
         if visited[i][j]:
             continue
         visited[i][j] = True
-        count = 1
         dfs(i, j)
 print(ans)
