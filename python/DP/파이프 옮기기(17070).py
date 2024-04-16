@@ -9,9 +9,7 @@ dp = [[[0] * 3 for _ in range(n)] for _ in range(n)]
 dp[0][1][0] = 1
 
 for i in range(n):
-    for j in range(1, n):
-        if i == 0 and j == 1:
-            continue
+    for j in range(2, n):
         if board[i][j] == 1:
             continue
         dp[i][j][0] = dp[i][j - 1][0] + dp[i][j - 1][2]
