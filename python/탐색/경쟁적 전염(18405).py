@@ -1,44 +1,42 @@
 from sys import stdin as f
 from collections import deque
+import heapq
 
 f = open("input.txt", "rt")  # 주석 처리해야 하는 부분
-
-n, k = list(map(int, f.readline().split()))
-
-examiner = []
-for i in range(n):
-    examiner.append(list(map(int, f.readline().split())))
-
-target_s, target_x, target_y = list(map(int, f.readline().split()))
-
-q = []
-dx = [-1, 1, 0, 0]
-dy = [0, 0, -1, 1]
+n, k = map(int, f.readline().split())
+board = [list(map(int, f.readline().split())) for _ in range(n)]
+s, x, y = map(int, f.readline().split())
 
 
+def spread(heap_q):
+    di = [-1, 1, 0, 0]
+    dj = [0, 0, -1, 1]
+
+    while heap_q:
+        second, virus, i, j = heapq.heappop(heap_q)
+
+        if second == s:
+            break
+
+        for k in range(4):
+            ni, nj = i + di[k], j + dj[k]
+
+            if ni < 0 or nj < 0 or ni >= n or nj >= n:
+                continue
+
+            if board[ni][nj]:
+                continue
+
+            board[ni][nj] = virus
+
+            heapq.heappush(heap_q, (second + 1, virus, ni, nj))
+
+
+heap_q = []
+heapq.heapify(heap_q)
 for i in range(n):
     for j in range(n):
-        if examiner[i][j]:
-            q.append((examiner[i][j], 0, i, j))
-
-q.sort()
-q = deque(q)
-
-while q:
-    virus, second, x, y = q.popleft()
-    if second == target_s:
-        break
-
-    for i in range(4):
-        nx = x + dx[i]
-        ny = y + dy[i]
-
-        if nx < 0 or ny < 0 or nx >= n or ny >= n:
-            continue
-        if examiner[nx][ny]:
-            continue
-
-        examiner[nx][ny] = virus
-        q.append((virus, second + 1, nx, ny))
-
-print(examiner[target_x - 1][target_y - 1])
+        if board[i][j]:
+            heapq.heappush(heap_q, (0, board[i][j], i, j))
+spread(heap_q)
+print(board[x - 1][y - 1])
